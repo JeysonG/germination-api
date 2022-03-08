@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  main:
+    container_name: germination-api
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
+      target: development
+    environment:
+      - MONGO_DB_CONNECTION_STRING=${MONGO_DB_CONNECTION_STRING}
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    command: npm run dev
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - /home/json/Git/dev-mongo-data:/data/db
