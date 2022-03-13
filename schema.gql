@@ -9,6 +9,7 @@ type User {
 }
 
 type Specie {
+  _id: ID!
   name: String!
   commonName: String!
   image: String!

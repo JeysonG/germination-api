@@ -1,6 +1,6 @@
 import { Model, FilterQuery, UpdateQuery } from 'mongoose';
 import { Injectable, Inject } from '@nestjs/common';
-import { Specie } from './specie.schema';
+import { Specie } from './model/specie';
 
 @Injectable()
 export class SpecieService {

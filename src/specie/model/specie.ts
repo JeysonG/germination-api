@@ -1,17 +1,11 @@
-import { Field, ObjectType } from '@nestjs/graphql';
-import * as mongoose from 'mongoose';
+import { ObjectType, Field, ID } from '@nestjs/graphql';
 import { Document } from 'mongoose';
-
-export const SpecieSchema = new mongoose.Schema({
-  name: String,
-  commonName: String,
-  image: String,
-  family: String,
-  status: String,
-});
 
 @ObjectType()
 export class Specie extends Document {
+  @Field(() => ID)
+  _id: string;
+
   @Field()
   name: string;
 

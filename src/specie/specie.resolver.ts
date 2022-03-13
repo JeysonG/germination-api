@@ -1,7 +1,7 @@
 import { Args, Mutation, Resolver, Query } from '@nestjs/graphql';
-import { CreateSpecieInput } from './specie.input';
+import { CreateSpecieInput } from './dto/specie.input';
 import { SpecieService } from '../specie/specie.service';
-import { Specie } from './specie.schema';
+import { Specie } from './model/specie';
 
 @Resolver(() => Specie)
 export class SpecieResolver {

@@ -1,5 +1,5 @@
 import { Connection } from 'mongoose';
-import { SpecieSchema } from './specie.schema';
+import { SpecieSchema } from './schema/specie.schema';
 
 export const specieProviders = [
   {
