@@ -8,16 +8,34 @@ type User {
   age: Float!
 }
 
+type Specie {
+  name: String!
+  commonName: String!
+  image: String!
+  family: String!
+  status: String!
+}
+
 type Query {
   users: [User!]!
+  species: [Specie!]!
 }
 
 type Mutation {
   createUser(input: CreateUserInput!): User!
+  createSpecie(input: CreateSpecieInput!): Specie!
 }
 
 input CreateUserInput {
   name: String!
   email: String!
   age: Float!
+}
+
+input CreateSpecieInput {
+  name: String!
+  commonName: String!
+  image: String!
+  family: String!
+  status: String!
 }

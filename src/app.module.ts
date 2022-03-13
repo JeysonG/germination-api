@@ -9,6 +9,10 @@ import { UserModule } from './user/user.module';
 import { userProviders } from './user/user.providers';
 import { databaseProviders } from './database/database.providers';
 import { DatabaseModule } from './database/database.module';
+import { SpecieService } from './specie/specie.service';
+import { SpecieResolver } from './specie/specie.resolver';
+import { SpecieModule } from './specie/specie.module';
+import { specieProviders } from './specie/specie.providers';
 
 @Module({
   imports: [
@@ -17,15 +21,24 @@ import { DatabaseModule } from './database/database.module';
       autoSchemaFile: 'schema.gql',
     }),
     UserModule,
+    SpecieModule,
     DatabaseModule,
   ],
   controllers: [AppController],
   providers: [
     AppService,
+    /* User */
     UserService,
     UserResolver,
-    ...databaseProviders,
     ...userProviders,
+
+    /* Specie */
+    SpecieService,
+    SpecieResolver,
+    ...specieProviders,
+
+    /* DB */
+    ...databaseProviders,
   ],
 })
 export class AppModule {}
