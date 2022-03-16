@@ -1,10 +1,10 @@
 import { ObjectType, Field, ID } from '@nestjs/graphql';
-import { Document } from 'mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
 
 @ObjectType()
 export class Specie extends Document {
   @Field(() => ID)
-  _id: string;
+  _id: MongooseSchema.Types.ObjectId;
 
   @Field()
   name: string;

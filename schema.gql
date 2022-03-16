@@ -25,6 +25,7 @@ type Query {
 type Mutation {
   createUser(input: CreateUserInput!): User!
   createSpecie(input: CreateSpecieInput!): Specie!
+  deleteSpecie(_id: String!): Specie!
 }
 
 input CreateUserInput {

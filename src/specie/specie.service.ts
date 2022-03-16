@@ -1,4 +1,9 @@
-import { Model, FilterQuery, UpdateQuery } from 'mongoose';
+import {
+  Model,
+  FilterQuery,
+  UpdateQuery,
+  Schema as MongooseSchema,
+} from 'mongoose';
 import { Injectable, Inject } from '@nestjs/common';
 import { Specie } from './model/specie';
 
@@ -19,5 +24,9 @@ export class SpecieService {
 
   async find(): Promise<Specie[]> {
     return this.specieModel.find().lean();
+  }
+
+  async delete(_id: MongooseSchema.Types.ObjectId) {
+    return this.specieModel.findByIdAndDelete(_id).exec();
   }
 }
