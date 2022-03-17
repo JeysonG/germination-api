@@ -26,6 +26,10 @@ export class SpecieService {
     return this.specieModel.find().lean();
   }
 
+  getById(_id: MongooseSchema.Types.ObjectId) {
+    return this.specieModel.findById(_id).exec();
+  }
+
   async delete(_id: MongooseSchema.Types.ObjectId) {
     return this.specieModel.findByIdAndDelete(_id).exec();
   }

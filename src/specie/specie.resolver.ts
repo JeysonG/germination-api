@@ -18,6 +18,13 @@ export class SpecieResolver {
     return this.service.find();
   }
 
+  @Query(() => Specie)
+  async specie(
+    @Args('_id', { type: () => String }) _id: MongooseSchema.Types.ObjectId,
+  ) {
+    return this.service.getById(_id);
+  }
+
   @Mutation(() => Specie)
   async deleteSpecie(
     @Args('_id', { type: () => String }) _id: MongooseSchema.Types.ObjectId,

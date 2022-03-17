@@ -20,6 +20,7 @@ type Specie {
 type Query {
   users: [User!]!
   species: [Specie!]!
+  specie(_id: String!): Specie!
 }
 
 type Mutation {
