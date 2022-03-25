@@ -30,6 +30,12 @@ export class SpecieService {
     return this.specieModel.findById(_id).exec();
   }
 
+  update(payload: UpdateQuery<Specie>) {
+    return this.specieModel
+      .findByIdAndUpdate(payload._id, payload, { new: true })
+      .exec();
+  }
+
   async delete(_id: MongooseSchema.Types.ObjectId) {
     return this.specieModel.findByIdAndDelete(_id).exec();
   }
