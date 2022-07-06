@@ -3,6 +3,10 @@ import { CreateSpecieInput, UpdateSpecieInput } from './dto/specie.input';
 import { SpecieService } from '../specie/specie.service';
 import { Specie } from './model/specie';
 import { Schema as MongooseSchema } from 'mongoose';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { UseInterceptors, UploadedFile } from '@nestjs/common';
+import { diskStorage } from 'multer';
+import { extname } from 'path';
 
 @Resolver(() => Specie)
 export class SpecieResolver {
@@ -35,5 +39,11 @@ export class SpecieResolver {
     @Args('_id', { type: () => String }) _id: MongooseSchema.Types.ObjectId,
   ) {
     return this.service.delete(_id);
+  }
+
+  @Mutation(() => Specie)
+  @UseInterceptors(FileInterceptor('file'))
+  async upload(@Args('file', { type: () => String }) @UploadedFile() file) {
+    console.log(file);
   }
 }
